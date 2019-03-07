@@ -1,0 +1,72 @@
+<!--/*
+  awt-project
+  Copyright (C) 2019  Susanna Pozzoli
+
+  This file is part of awt-project.
+
+  awt-project is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  awt-project is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with awt-project.  If not, see <https://www.gnu.org/licenses/>.
+*/-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>awt-project</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column mx-auto my-3 px-3 w-auto">
+        <div class="align-middle mb-3 text-center">
+          <h4>Sign up to awt-project</h4>
+        </div>
+        <form class="border rounded mb-3 p-3" th:action="@{/users}" th:method="post">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="name" name="name" />
+            <small class="form-text text-muted">This will be your username.</small>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" />
+            <small class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" />
+            <small class="form-text text-muted">Make sure it's more than 15 characters OR at least 8 characters including a number and a lowercase letter.</small>
+          </div>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select class="form-control" id="role" name="role" />
+              <option value="MANAGER">Manager</option>
+              <option value="WORKER">Worker</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+  <!-- Popper.js -->
+  <!-- Bootstrap -->
+  <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

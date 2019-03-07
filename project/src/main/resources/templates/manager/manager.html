@@ -1,0 +1,120 @@
+<!--/*
+  awt-project
+  Copyright (C) 2019  Susanna Pozzoli
+
+  This file is part of awt-project.
+
+  awt-project is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  awt-project is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with awt-project.  If not, see <https://www.gnu.org/licenses/>.
+*/-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>awt-project</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="/manager/">awt-project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toogle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbar-nav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span sec:authentication="name"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
+            <a class="dropdown-item disabled" href="#">Signed in as [[${#authentication.name}]]</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" th:href="@{|/managers/${#authentication.name}|}">Settings</a>
+            <a class="dropdown-item" href="#" onclick="document.getElementById('sign-out').submit();">Sign out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main class="container">
+    <div class="my-3" style="overflow: auto;">
+      <div class="col-3 float-left pl-0">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+          <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
+          <a class="nav-link" id="v-pills-account-tab" data-toggle="pill" href="#v-pills-account" role="tab" aria-controls="v-pills-account" aria-selected="false">Account</a>
+        </div>
+      </div>
+      <div class="col-9 float-right pr-0">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div class="border-bottom mb-3 user-header">
+              Profile
+            </div>
+            <div class="my-3 w-67">
+              <form action="#" th:action="@{|/managers/${#authentication.name}|}" th:method="put" th:object="${manager}">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="name" name="name" th:field="*{name}" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" th:field="*{email}" />
+                  <small class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                  <label for="role">Role</label>
+                  <input type="text" readonly class="form-control-plaintext" id="role" name="role" th:field="*{role}" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
+            <div class="border-bottom mb-3 user-header">
+              Account
+            </div>
+            <div class="my-3 w-67">
+              <form action="#" th:action="@{|/managers/${#authentication.name}/change-password|}" th:method="patch">
+                <div class="form-group">
+                  <label for="username">Old password</label>
+                  <input type="password" class="form-control" id="old-password" name="old-password" />
+                </div>
+                <div class="form-group">
+                  <label for="username">New password</label>
+                  <input type="password" class="form-control" id="new-password" name="new-password" />
+                  <small class="form-text text-muted">Make sure it's more than 15 characters OR at least 8 characters including a number and a lowercase letter.</small>
+                </div>
+                <div class="form-group">
+                  <label for="username">Confirm new password</label>
+                  <input type="password" class="form-control" id="confirm-new-password" name="confirm-new-password" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form id="sign-out" method="post" name="sign-out" th:action="@{/sign-out}"></form>
+  </main>
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+  <!-- Popper.js -->
+  <!-- Bootstrap -->
+  <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

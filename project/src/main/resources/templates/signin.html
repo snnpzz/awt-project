@@ -1,0 +1,73 @@
+<!--/*
+  awt-project
+  Copyright (C) 2019  Susanna Pozzoli
+
+  This file is part of awt-project.
+
+  awt-project is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  awt-project is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with awt-project.  If not, see <https://www.gnu.org/licenses/>.
+*/-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>awt-project</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column mx-auto my-3 px-3 w-auto">
+        <div class="align-middle mb-3 text-center">
+          <h4>Sign in to awt-project</h4>
+        </div>
+        <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+          Invalid user name and password.
+          <button type="button" class="close" data-dismiss="alert" alert-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div th:if="${param.logout}" class="alert alert-primary alert-dismissible fade show" role="alert">
+          You have been logged out.
+          <button type="button" class="close" data-dismiss="alert" alert-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form class="border rounded mb-3 p-3" th:action="@{/sign-in}" th:method="post">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="name" name="name" autofocus>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+        <div class="align-middle border mb-3 p-3 rounded text-center">
+          New to awt-project? <a href="/sign-up">Create an account</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+  <!-- Popper.js -->
+  <!-- Bootstrap -->
+  <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

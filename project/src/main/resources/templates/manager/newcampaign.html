@@ -1,0 +1,86 @@
+<!--/*
+  awt-project
+  Copyright (C) 2019  Susanna Pozzoli
+
+  This file is part of awt-project.
+
+  awt-project is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  awt-project is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with awt-project.  If not, see <https://www.gnu.org/licenses/>.
+*/-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>awt-project</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="/manager/">awt-project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toogle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbar-nav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            +
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+            <a class="dropdown-item" href="/manager/campaigns">Campaign</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span sec:authentication="name"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
+            <a class="dropdown-item disabled" href="#">Signed in as [[${#authentication.name}]]</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" th:href="@{|/managers/${#authentication.name}|}">Settings</a>
+            <a class="dropdown-item" href="#" onclick="document.getElementById('sign-out').submit();">Sign out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main role="main">
+    <div class="container my-3">
+      <div class="border-bottom new-campaign-header my-3">
+        <h2 class="title">Create a new campaign</h2>
+        <p class="body">A campaigns contains all the </p>
+      </div>
+      <form th:action="@{/manager/campaigns}" th:method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" />
+          <small class="form-text text-muted">abc</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <form id="sign-out" method="post" name="sign-out" th:action="@{/sign-out}"></form>
+  </main>
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+  <!-- Popper.js -->
+  <!-- Bootstrap -->
+  <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

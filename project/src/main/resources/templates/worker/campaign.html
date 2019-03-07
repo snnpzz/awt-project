@@ -1,0 +1,119 @@
+<!--/*
+  awt-project
+  Copyright (C) 2019  Susanna Pozzoli
+
+  This file is part of awt-project.
+
+  awt-project is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  awt-project is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with awt-project.  If not, see <https://www.gnu.org/licenses/>.
+*/-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Cesium -->
+  <link rel="stylesheet" href="/js/cesium/Build/Cesium/Widgets/widgets.css">
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="/js/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>awt-project</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="/worker/">awt-project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toogle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbar-nav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span sec:authentication="name"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
+            <a class="dropdown-item disabled" href="#">Signed in as [[${#authentication.name}]]</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" th:href="@{|/workers/${#authentication.name}|}">Settings</a>
+            <a class="dropdown-item" href="#" onclick="document.getElementById('sign-out').submit();">Sign out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main role="main">
+    <div class="container my-3">
+      <h1 class="mb-3 campaign-header">
+        <span class="manager">
+          [[${campaign.manager.name}]]
+        </span>
+         \
+        <span class="name">
+          <b>
+            <a th:href="@{|/worker/campaigns/${campaign.id}|}">[[${campaign.name}]]</a>
+          </b>
+        </span>
+      </h1>
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="true">Map</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+          <div id="modal-container"></div>
+          <div class="my-3" style="overflow: auto;">
+            <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" name="ds" id="2d" autocomplete="off" checked> 2D
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="ds" id="3d" autocomplete="off"> 3D
+              </label>
+            </div>
+          </div>
+          <div class="my-3" id="map-container_worker">
+            <div id="map-2d_worker"></div>
+            <div id="map-3d_worker" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form id="sign-out" method="post" name="sign-out" th:action="@{/sign-out}"></form>
+    <input type="hidden" id="id" name="id" th:value="${campaign.id}" />
+  </main>
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var yellowPeaks = /*[[${yellowPeaks}]]*/;
+    var orangePeaks = /*[[${orangePeaks}]]*/;
+    var redPeaks = /*[[${redPeaks}]]*/;
+    var greenPeaks = /*[[${greenPeaks}]]*/;
+    /*]]>*/
+  </script>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+  <!-- Popper.js -->
+  <!-- Bootstrap -->
+  <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  <!-- Cesium -->
+  <script type="text/javascript" src="/js/cesium/Build/Cesium/Cesium.js"></script>
+  <!-- Leaflet -->
+  <script type="text/javascript" src="/js/leaflet/leaflet.js"></script>
+  <script type="text/javascript" src="/js/worker.js"></script>
+</body>
+</html>

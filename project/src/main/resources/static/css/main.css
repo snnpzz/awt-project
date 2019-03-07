@@ -1,0 +1,85 @@
+/*
+  awt-project
+  Copyright (C) 2019  Susanna Pozzoli
+
+  This file is part of awt-project.
+
+  awt-project is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  awt-project is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with awt-project.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+}
+
+.campaign-header {
+  font-size: 1.5rem;
+}
+
+.new-campaign-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.new-campaign-header > .body {
+  color: #6c757d;
+}
+
+.new-campaign-header > .title {
+}
+
+.peak-header {
+  font-size: 1.5rem;
+}
+
+.user-header {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  padding-bottom: 0.5rem;
+}
+
+.w-67 {
+  width: 67%;
+}
+
+#map-2d_manager {
+  height: 100%;
+  width: 100%;
+}
+
+#map-2d_worker {
+  height: 100%;
+  width: 100%;
+}
+
+#map-3d_manager {
+  height: 100%;
+  width: 100%;
+}
+
+#map-3d_worker {
+  height: 100%;
+  width: 100%;
+}
+
+#map-container_manager {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+#map-container_worker {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
