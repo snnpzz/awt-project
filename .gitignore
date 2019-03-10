@@ -2,7 +2,6 @@ project/.settings/
 project/src/main/resources/static/js/cesium/
 project/src/main/resources/static/js/manager.js
 project/src/main/resources/static/js/worker.js
-project/src/main/resources/application.properties
 project/target/
 project/.classpath
 project/.project
