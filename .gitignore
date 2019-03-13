@@ -1,5 +1,9 @@
 project/.settings/
-project/src/main/resources/static/js/cesium/
+project/src/main/resources/static/js/cesium/Apps
+project/src/main/resources/static/js/cesium/Build
+project/src/main/resources/static/js/cesium/Source
+project/src/main/resources/static/js/cesium/Specs
+project/src/main/resources/static/js/cesium/ThirdParty
 project/target/
 project/.classpath
 project/.project
