@@ -18,9 +18,8 @@
  * along with awt-project.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package it.polimi.awt.project.conflict;
+package it.polimi.awt.project.campaign;
 
-import it.polimi.awt.project.campaign.Campaign;
 import it.polimi.awt.project.peak.Peak;
 
 public class Conflict {

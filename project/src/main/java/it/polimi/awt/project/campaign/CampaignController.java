@@ -37,7 +37,6 @@ import org.springframework.web.multipart.MultipartFile;
 import it.polimi.awt.project.annotation.Annotation;
 import it.polimi.awt.project.annotation.AnnotationStatus;
 import it.polimi.awt.project.config.CustomUserDetails;
-import it.polimi.awt.project.conflict.Conflict;
 import it.polimi.awt.project.load.Load;
 import it.polimi.awt.project.peak.Peak;
 import it.polimi.awt.project.user.Worker;
